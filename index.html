@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* Paleta: carbón, verde tomatillo y rojo chile. Hero con foto histórica de fondo. */
 :root {
   --bg: #1b1a17;
   --surface: #26241f;
@@ -34,7 +33,6 @@ a { color: var(--accent); }
 a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
 
-/* Encabezado con foto de fondo y velo oscuro para leer el texto */
 header.hero {
   position: relative;
   min-height: 640px;
@@ -87,13 +85,11 @@ h2 {
 }
 p { max-width: 65ch; margin: 0 0 14px; }
 
-/* Historia del fundador */
 .founder { display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center; }
 @media (min-width: 720px) { .founder { grid-template-columns: 1fr 1fr; } }
 .founder img { width: 100%; border-radius: 12px; border: 1px solid var(--line); }
 .founder .caption { color: var(--muted); font-size: 14px; margin-top: 8px; }
 
-/* Horario */
 .hours {
   border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
   background: var(--surface);
@@ -103,7 +99,6 @@ p { max-width: 65ch; margin: 0 0 14px; }
 .hours div:last-child { border-bottom: 0; }
 .hours span:last-child { font-variant-numeric: tabular-nums; color: var(--muted); }
 
-/* Contacto */
 .contact-grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
 @media (min-width: 640px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
 .card {
@@ -113,41 +108,12 @@ p { max-width: 65ch; margin: 0 0 14px; }
 .card h3 { margin: 0 0 6px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
 .card .num { font-size: 20px; font-variant-numeric: tabular-nums; margin-bottom: 12px; display: block; }
 
-/* Espacios por llenar */
-.menu-slot, .photo-slot {
-  background: var(--surface); border: 1px dashed #4a463c; border-radius: 12px;
-  display: grid; place-items: center; text-align: center; color: var(--muted);
-  padding: 28px; min-height: 220px;
-}
-.photo-grid { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
-@media (min-width: 720px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
-.photo-slot { min-height: 200px; }
-
-/* Menú */
-.menu-block { margin-top: 40px; }
-.menu-block h3 {
-  font-family: var(--font-display); font-weight: 400;
-  font-size: 28px; letter-spacing: .02em; color: var(--accent);
-  margin: 0 0 6px;
-}
-.menu-block .lead { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
-.row {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
-  padding: 9px 0; border-bottom: 1px dotted var(--line);
-}
-.row .price { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
-.row .desc { display: block; color: var(--muted); font-size: 14px; font-weight: 400; }
-.cols { display: grid; gap: 32px; grid-template-columns: 1fr; }
-@media (min-width: 760px) { .cols { grid-template-columns: 1fr 1fr; } }
-.tbl-wrap { overflow-x: auto; }
-table.spirits { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 420px; }
-table.spirits th, table.spirits td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; }
-table.spirits th:not(:first-child), table.spirits td:not(:first-child) {
-  text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap;
-}
-table.spirits th { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
-
 .footer { padding: 32px 0 56px; color: var(--muted); font-size: 14px; }
+
+.menu-title { font-family: var(--font-display); font-weight: 400; font-size: 28px; color: var(--accent); margin: 36px 0 14px; }
+.menu-pages { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .menu-pages { grid-template-columns: 1fr 1fr; } }
+.menu-pages img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); background: #fff; }
 </style>
 </head>
 <body>
@@ -182,22 +148,15 @@ table.spirits th { color: var(--muted); font-size: 13px; text-transform: upperca
 <section id="menu">
   <div class="wrap">
     <h2>Menú</h2>
-    <p>Consulta el menú completo de alimentos y bebidas en PDF.</p>
+    <p>Consulta el menú completo de alimentos y bebidas. También puedes descargarlo en PDF.</p>
     <div class="actions">
-      <a class="btn" href="menu_alimentos.pdf">Ver menú de alimentos</a>
-      <a class="btn ghost" href="menu_bebidas.pdf">Ver menú de bebidas</a>
+      <a class="btn" href="menu_alimentos.pdf">Descargar menú de alimentos (PDF)</a>
+      <a class="btn ghost" href="menu_bebidas.pdf">Descargar menú de bebidas (PDF)</a>
     </div>
-  </div>
-</section>
-
-<section id="fotos">
-  <div class="wrap">
-    <h2>Nuestro lugar</h2>
-    <div class="photo-grid">
-      <div class="photo-slot">Foto 1</div>
-      <div class="photo-slot">Foto 2</div>
-      <div class="photo-slot">Foto 3</div>
-    </div>
+    <h3 class="menu-title">Menú de alimentos</h3>
+    <div class="menu-pages"><img src="menu/alim-1.jpg" alt="Menú de alimentos, página 1" loading="lazy"><img src="menu/alim-2.jpg" alt="Menú de alimentos, página 2" loading="lazy"></div>
+    <h3 class="menu-title">Menú de bebidas</h3>
+    <div class="menu-pages"><img src="menu/beb-01.jpg" alt="Menú de bebidas, página 1" loading="lazy"><img src="menu/beb-02.jpg" alt="Menú de bebidas, página 2" loading="lazy"><img src="menu/beb-03.jpg" alt="Menú de bebidas, página 3" loading="lazy"><img src="menu/beb-04.jpg" alt="Menú de bebidas, página 4" loading="lazy"><img src="menu/beb-05.jpg" alt="Menú de bebidas, página 5" loading="lazy"><img src="menu/beb-06.jpg" alt="Menú de bebidas, página 6" loading="lazy"><img src="menu/beb-07.jpg" alt="Menú de bebidas, página 7" loading="lazy"><img src="menu/beb-08.jpg" alt="Menú de bebidas, página 8" loading="lazy"><img src="menu/beb-09.jpg" alt="Menú de bebidas, página 9" loading="lazy"><img src="menu/beb-10.jpg" alt="Menú de bebidas, página 10" loading="lazy"><img src="menu/beb-11.jpg" alt="Menú de bebidas, página 11" loading="lazy"></div>
   </div>
 </section>
 
