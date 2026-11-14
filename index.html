@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Reforma · Comida chilanga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Paleta: carbón, verde tomatillo y rojo chile. Hero con foto histórica de fondo. */
+:root {
+  --bg: #1b1a17;
+  --surface: #26241f;
+  --ink: #f4efe6;
+  --muted: #b9b1a2;
+  --accent: #9fd16b;
+  --chile: #e0452b;
+  --line: #3a372f;
+  --font-display: "Anton", "Impact", sans-serif;
+  --font-body: "Work Sans", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  font-size: 17px;
+}
+a { color: var(--accent); }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+
+/* Encabezado con foto de fondo y velo oscuro para leer el texto */
+header.hero {
+  position: relative;
+  min-height: 640px;
+  display: flex;
+  align-items: flex-end;
+  padding: 72px 0 56px;
+  background-image:
+    linear-gradient(180deg, rgba(27,26,23,.25) 0%, rgba(27,26,23,.55) 55%, rgba(27,26,23,.95) 100%),
+    linear-gradient(90deg, rgba(27,26,23,.85) 0%, rgba(27,26,23,.2) 70%),
+    url("abuelo.jpg");
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid var(--line);
+}
+.logo {
+  display: block;
+  width: min(360px, 90%); height: auto;
+  margin: 0 0 24px;
+}
+h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(52px, 9vw, 104px);
+  line-height: .95;
+  margin: 0 0 12px;
+  letter-spacing: .01em;
+  text-wrap: balance;
+}
+.tagline { color: #e6dfd2; font-size: 19px; margin: 0 0 28px; max-width: 46ch; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-block; text-decoration: none;
+  padding: 13px 20px; border-radius: 999px;
+  font-weight: 600; font-size: 15px;
+  border: 1px solid var(--accent);
+  color: var(--bg); background: var(--accent);
+}
+.btn.ghost { background: transparent; color: var(--ink); border-color: rgba(244,239,230,.6); }
+.btn.chile { background: var(--chile); border-color: var(--chile); color: #fff; }
+
+section { padding: 48px 0; border-bottom: 1px solid var(--line); }
+h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 40px;
+  letter-spacing: .02em;
+  margin: 0 0 16px;
+  text-wrap: balance;
+}
+p { max-width: 65ch; margin: 0 0 14px; }
+
+/* Historia del fundador */
+.founder { display: grid; gap: 24px; grid-template-columns: 1fr; align-items: center; }
+@media (min-width: 720px) { .founder { grid-template-columns: 1fr 1fr; } }
+.founder img { width: 100%; border-radius: 12px; border: 1px solid var(--line); }
+.founder .caption { color: var(--muted); font-size: 14px; margin-top: 8px; }
+
+/* Horario */
+.hours {
+  border: 1px solid var(--line); border-radius: 12px; overflow: hidden;
+  background: var(--surface);
+  max-width: 520px;
+}
+.hours div { display: flex; justify-content: space-between; padding: 12px 18px; border-bottom: 1px solid var(--line); }
+.hours div:last-child { border-bottom: 0; }
+.hours span:last-child { font-variant-numeric: tabular-nums; color: var(--muted); }
+
+/* Contacto */
+.contact-grid { display: grid; gap: 14px; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+.card {
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; padding: 20px;
+}
+.card h3 { margin: 0 0 6px; font-size: 14px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 600; }
+.card .num { font-size: 20px; font-variant-numeric: tabular-nums; margin-bottom: 12px; display: block; }
+
+/* Espacios por llenar */
+.menu-slot, .photo-slot {
+  background: var(--surface); border: 1px dashed #4a463c; border-radius: 12px;
+  display: grid; place-items: center; text-align: center; color: var(--muted);
+  padding: 28px; min-height: 220px;
+}
+.photo-grid { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+@media (min-width: 720px) { .photo-grid { grid-template-columns: repeat(3, 1fr); } }
+.photo-slot { min-height: 200px; }
+
+/* Menú */
+.menu-block { margin-top: 40px; }
+.menu-block h3 {
+  font-family: var(--font-display); font-weight: 400;
+  font-size: 28px; letter-spacing: .02em; color: var(--accent);
+  margin: 0 0 6px;
+}
+.menu-block .lead { color: var(--muted); font-size: 14px; margin: 0 0 14px; }
+.row {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 16px;
+  padding: 9px 0; border-bottom: 1px dotted var(--line);
+}
+.row .price { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+.row .desc { display: block; color: var(--muted); font-size: 14px; font-weight: 400; }
+.cols { display: grid; gap: 32px; grid-template-columns: 1fr; }
+@media (min-width: 760px) { .cols { grid-template-columns: 1fr 1fr; } }
+.tbl-wrap { overflow-x: auto; }
+table.spirits { width: 100%; border-collapse: collapse; font-size: 15px; min-width: 420px; }
+table.spirits th, table.spirits td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: left; }
+table.spirits th:not(:first-child), table.spirits td:not(:first-child) {
+  text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+table.spirits th { color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; font-weight: 600; }
+
+.footer { padding: 32px 0 56px; color: var(--muted); font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <img class="logo" src="logo.png" alt="La Reforma, desde 1963, auténtica cantina" width="900" height="359">
+    <h1>La Reforma</h1>
+    <p class="tagline">Comida chilanga en México Norte, Mérida. Sabor de la Ciudad de México, con cocina hecha al momento.</p>
+    <div class="actions">
+      <a class="btn chile" href="https://wa.me/529999476320?text=Hola%2C%20quiero%20reservar%20mesa%20en%20La%20Reforma">Reservar mesa</a>
+      <a class="btn ghost" href="#menu">Ver menú</a>
+      <a class="btn ghost" href="#ubicacion">Cómo llegar</a>
+    </div>
+  </div>
+</header>
+
+<section id="historia">
+  <div class="wrap founder">
+    <div>
+      <h2>Nuestra historia</h2>
+      <p>La Reforma se fundó en 1963 en la Ciudad de México, de la mano de Germán Gayoso. Desde entonces, es una cantina auténtica con sabor chilango.</p>
+      <p>En noviembre de 2016, Miguel Gayoso, hijo de Germán, trajo La Reforma a Mérida con La Reforma México Norte, para llevar esa misma comida chilanga a Yucatán.</p>
+    </div>
+    <div>
+      <img src="abuelo.jpg" alt="Germán Gayoso, fundador de La Reforma, caminando por una calle de la ciudad, en una fotografía antigua">
+      <p class="caption">Germán Gayoso, fundador de La Reforma.</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <h2>Menú</h2>
+    <p>Consulta el menú completo de alimentos y bebidas en PDF.</p>
+    <div class="actions">
+      <a class="btn" href="menu_alimentos.pdf">Ver menú de alimentos</a>
+      <a class="btn ghost" href="menu_bebidas.pdf">Ver menú de bebidas</a>
+    </div>
+  </div>
+</section>
+
+<section id="fotos">
+  <div class="wrap">
+    <h2>Nuestro lugar</h2>
+    <div class="photo-grid">
+      <div class="photo-slot">Foto 1</div>
+      <div class="photo-slot">Foto 2</div>
+      <div class="photo-slot">Foto 3</div>
+    </div>
+  </div>
+</section>
+
+<section id="horario">
+  <div class="wrap">
+    <h2>Horario</h2>
+    <div class="hours">
+      <div><span>Lunes</span><span>1:00 – 8:00 p.m.</span></div>
+      <div><span>Martes</span><span>1:00 – 10:00 p.m.</span></div>
+      <div><span>Miércoles</span><span>1:00 – 10:00 p.m.</span></div>
+      <div><span>Jueves</span><span>1:00 – 10:00 p.m.</span></div>
+      <div><span>Viernes</span><span>1:00 – 10:00 p.m.</span></div>
+      <div><span>Sábado</span><span>1:00 – 8:00 p.m.</span></div>
+      <div><span>Domingo</span><span>Cerrado</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="ubicacion">
+  <div class="wrap">
+    <h2>Ubicación y contacto</h2>
+    <div class="contact-grid">
+      <div class="card">
+        <h3>Dirección</h3>
+        <p style="margin:0">Avenida Libano 39A, esquina 1E<br>México Norte, 97128 Mérida, Yucatán</p>
+        <p style="margin:12px 0 0"><a href="https://www.google.com/maps/search/?api=1&query=Avenida+Libano+39A+Mérida+Yucatán">Abrir en Google Maps</a></p>
+      </div>
+      <div class="card">
+        <h3>Teléfono</h3>
+        <span class="num">999 461 9086</span>
+        <h3>WhatsApp</h3>
+        <span class="num">999 947 6320</span>
+        <a href="https://wa.me/529999476320">Escribir por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">La Reforma · Comida chilanga · Avenida Libano 39A, México Norte, Mérida</div>
+</footer>
+
+</body>
+</html>
